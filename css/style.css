@@ -106,6 +106,11 @@ li {
   justify-content: center;
 }
 
+#details.inactive {
+  background-color: #ced8e4;
+  border: 1px solid #ced8e4;
+}
+
 #details h3 {
   margin: auto;
 }
@@ -166,6 +171,52 @@ li {
 
 .dimmed.show {
   display: block;
+}
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 4px solid #333;
+  border-top: 4px solid #7f7f7f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.blank {
+  background-color: #ced8e4;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.blank.hide {
+  display: none;
 }
 
 @media screen and (max-width: 1024px) {
