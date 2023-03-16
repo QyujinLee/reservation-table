@@ -42,6 +42,7 @@ li {
 }
 
 .item__status {
+  flex: none;
   margin: 0px 25px;
   display: flex;
   flex-direction: column;
@@ -54,6 +55,14 @@ li {
   font-weight: 600;
 }
 
+.item__status .status.reserved {
+  color: #3bb94c;
+}
+
+.item__status .status.seated {
+  color: #162149;
+}
+
 .item__details {
   flex-grow: 1;
 }
@@ -64,6 +73,7 @@ li {
 }
 
 .reservation__button {
+  flex: none;
   border-radius: 4px;
   width: 80px;
   height: 36px;
@@ -72,19 +82,20 @@ li {
   cursor: pointer;
 }
 
-.reservation__button.reserve {
+.reservation__button.reserved {
   background-color: #162149;
   color: #ffffff;
   border: 1px solid #162149;
 }
 
-.reservation__button.cancle {
+.reservation__button.seated {
   background-color: #ffffff;
   color: #162149;
   border: 1px solid #162149;
 }
 
 #details {
+  flex: none;
   width: 320px;
   height: 558px;
   border: 1px solid #ffffff;
@@ -100,21 +111,7 @@ li {
 }
 
 .details__btn-close {
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  outline: none;
-  background-color: #ffffff;
-  border: none;
-  font-weight: 600;
-}
-
-.details__btn-close.hide {
   display: none;
-}
-
-.details__btn-close.show {
-  display: block;
 }
 
 .detail {
@@ -122,12 +119,34 @@ li {
 }
 
 .reservation__wrap {
+  display: flex;
   margin: 10px 0px;
 }
 
 .reservation__title {
+  flex: none;
   color: #808080;
   margin: 0px 25px;
+}
+
+.reservation__value {
+  display: inline-block;
+  width: 185px;
+}
+
+.reservation__value.one-line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reservation__value.three-line {
+  height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .dimmed {
@@ -149,7 +168,7 @@ li {
   display: block;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 1024px) {
   #list {
     margin: 0px;
   }
@@ -181,7 +200,7 @@ li {
 
   #details {
     position: fixed;
-    width: 320px;
+    width: 100%;
     height: 582px;
     left: 0;
     bottom: 0;
@@ -206,5 +225,30 @@ li {
   .slide-up.show {
     transform: translateY(0);
     opacity: 1;
+  }
+
+  .details__btn-close {
+    display: block;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    outline: none;
+    background-color: #ffffff;
+    border: none;
+    font-weight: 600;
+  }
+
+  .reservation__wrap {
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .reservation__title {
+    flex-grow: 1;
+  }
+
+  .reservation__value {
+    flex-grow: 2;
   }
 }
