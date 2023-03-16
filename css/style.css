@@ -175,7 +175,7 @@ li {
 
   .item__status {
     margin: 0px 10px;
-    width: 40px;
+    width: 55px;
     text-align: center;
   }
 
@@ -236,6 +236,7 @@ li {
     background-color: #ffffff;
     border: none;
     font-weight: 600;
+    cursor: pointer;
   }
 
   .reservation__wrap {
@@ -249,6 +250,11 @@ li {
   }
 
   .reservation__value {
+    margin: 0px 50px 0px 20px;
     flex-grow: 2;
+  }
+
+  .reservation__value.three-line {
+    height: 62px;
   }
 }

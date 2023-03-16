@@ -188,6 +188,9 @@ const getList = async () => {
 const setDetails = (id) => {
   const target = reservations.find((item) => item.id === id);
 
+  const parent = document.getElementById('details');
+  parent.setAttribute('data-id', id);
+
   const dtlStatus = document.querySelector('#dtl__status');
   dtlStatus.innerText = target.status === 'reserved' ? '예약' : '착석 중';
 
@@ -208,6 +211,15 @@ const setDetails = (id) => {
 
   const dtlRequest = document.querySelector('#dtl__request');
   dtlRequest.innerText = target.customer.request;
+
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 1024) {
+    const dimmed = document.querySelector('.dimmed');
+    parent.classList.add('show');
+    dimmed.classList.remove('hide');
+    dimmed.classList.add('show');
+  }
 };
 
 /**
@@ -236,10 +248,8 @@ const handleClickStatusBtn = (target) => {
     // 예약정보 변경
     const dtlStatus = document.querySelector('#dtl__status');
     dtlStatus.innerText = '착석 중';
-  }
-
-  // 퇴석 버튼 클릭 시
-  if (target.classList.contains('seated')) {
+  } else if (target.classList.contains('seated')) {
+    // 퇴석 버튼 클릭 시
     // 원본 배열에서 삭제
     reservations.filter((item) => item.id !== id);
 
@@ -248,14 +258,26 @@ const handleClickStatusBtn = (target) => {
     listItem.remove();
 
     // 삭제된 요소의 상세페이지가 노출되고 있는 상태였다면 리스트의 첫번째 상세페이지 노출
-    const currentDetails = document.getElementById('details');
+    const details = document.getElementById('details');
 
-    if (currentDetails.dataset.id === id) {
+    if (details.dataset.id === id) {
       const parent = document.getElementById('list');
-      const newId = parent.firstChild.dataset.id;
+      const newId = parent.children[0].dataset.id;
       setDetails(newId);
     }
   }
+};
+
+/**
+ * 닫기 버튼, 딤드 클릭 시 이벤트
+ */
+const handleClickClose = () => {
+  const details = document.getElementById('details');
+  const dimmed = document.querySelector('.dimmed');
+
+  details.classList.remove('show');
+  dimmed.classList.remove('show');
+  dimmed.classList.add('hide');
 };
 
 (async function () {
@@ -264,6 +286,8 @@ const handleClickStatusBtn = (target) => {
   const listItemStatusEls = document.querySelectorAll('.item__status');
   const listItemDetailsEls = document.querySelectorAll('.item__details');
   const listItemBtnEls = document.querySelectorAll('.reservation__button');
+  const btnClose = document.querySelector('.details__btn-close');
+  const dimmed = document.querySelector('.dimmed');
 
   // 리스트 아이템 클릭시 이벤트 핸들러 바인딩
   listItemStatusEls.forEach((item) => {
@@ -284,5 +308,15 @@ const handleClickStatusBtn = (target) => {
     item.addEventListener('click', (e) => {
       handleClickStatusBtn(e.currentTarget);
     });
+  });
+
+  // 모바일 화면 시 닫기 버튼 이벤트 핸들러 바인딩
+  btnClose.addEventListener('click', () => {
+    handleClickClose();
+  });
+
+  // 딤드 클릭 시 이벤트 핸들러 바인딩
+  dimmed.addEventListener('click', () => {
+    handleClickClose();
   });
 })();
