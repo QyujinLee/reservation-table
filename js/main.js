@@ -4,18 +4,21 @@ import { getReservations } from './api/api.js';
 let reservations;
 
 /**
- * 화면 진입 시 API 조회 후
+ * 화면 렌더링
+ * @param {Array} data
+ * @returns
  */
-const getList = async () => {
-  let response = await getReservations();
-  response = response.filter((reservation) => reservation.status !== 'done');
+const renderContents = (data) => {
+  let result;
+
+  result = data.filter((reservation) => reservation.status !== 'done');
 
   /**
    * 목록 set
    */
   const parentList = document.getElementById('list');
 
-  response.forEach((reservation, idx) => {
+  result.forEach((reservation, idx) => {
     // 노출 데이터 가공
     const tables = reservation.tables.map((item) => item.name).join(', ');
     const menus = reservation.menus.map((item) => `${item.name}(${item.qty})`).join(', ');
@@ -178,7 +181,35 @@ const getList = async () => {
     }
   });
 
-  return response;
+  return result;
+};
+
+/**
+ * 화면 진입 시 API 조회 후
+ */
+const getList = async () => {
+  // 로딩 시작
+  showLoading();
+  let result;
+
+  // API data get
+  await getReservations()
+    .then((response) => response.json())
+    .then((data) => {
+      result = renderContents(data.reservations);
+
+      const details = document.getElementById('details');
+      details.classList.remove('inactive');
+      hideLoading();
+    })
+    .catch((error) => {
+      hideLoading();
+      console.error(error);
+      alert('API GET Error');
+      throw new Error('API GET Error');
+    });
+
+  return result;
 };
 
 /**
@@ -260,7 +291,10 @@ const handleClickStatusBtn = (target) => {
     // 삭제된 요소의 상세페이지가 노출되고 있는 상태였다면 리스트의 첫번째 상세페이지 노출
     const details = document.getElementById('details');
 
-    if (details.dataset.id === id) {
+    if (document.getElementById('list').childElementCount === 0) {
+      const blank = document.querySelector('.blank');
+      blank.classList.remove('hide');
+    } else if (details.dataset.id === id) {
       const parent = document.getElementById('list');
       const newId = parent.children[0].dataset.id;
       setDetails(newId);
@@ -278,6 +312,20 @@ const handleClickClose = () => {
   details.classList.remove('show');
   dimmed.classList.remove('show');
   dimmed.classList.add('hide');
+};
+
+/**
+ * 로딩 노출
+ */
+const showLoading = () => {
+  document.getElementById('loading').style.display = 'block';
+};
+
+/**
+ * 로딩 미노출
+ */
+const hideLoading = () => {
+  document.getElementById('loading').style.display = 'none';
 };
 
 (async function () {
