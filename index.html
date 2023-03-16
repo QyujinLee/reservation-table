@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="reservation table for tabling assignment" />
     <meta name="author" content="Gyujin Lee" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="js/main.js" defer></script>
     <title>RESERVATION TABLE</title>
   </head>
   <body>
     <h1 class="header">예약 목록</h1>
     <div class="body__wrap">
       <div id="list">
-        <div class="list__item">
+        <!-- <div class="list__item">
           <div class="item__status">
             <p class="time">시간</p>
             <p class="status">상태</p>
@@ -24,144 +24,12 @@
             <li class="detail__personnel">성인○○ 아이○○</li>
             <li class="detail__menu">메뉴명(갯수)</li>
           </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button cancle">취소</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
-        <div class="list__item">
-          <div class="item__status">
-            <p class="time">시간</p>
-            <p class="status">상태</p>
-          </div>
-          <ul class="item__details">
-            <li class="detail__name">예약자명 - 테이블명</li>
-            <li class="detail__personnel">성인○○ 아이○○</li>
-            <li class="detail__menu">메뉴명(갯수)</li>
-          </ul>
-          <button class="reservation__button reserve">예약</button>
-        </div>
+          <button class="reservation__button reserved">착석</button>
+        </div> -->
       </div>
-      <div id="details" class="slide-up">
-        <h3>예약 정보</h3>
-        <button class="details__btn-close show">닫기</button>
+      <div id="details" class="slide-up show">
+        <!-- <h3>예약 정보</h3>
+        <button class="details__btn-close">닫기</button>
         <div class="detail detail__reservation">
           <div class="reservation__wrap">
             <span class="reservation__title">예약 상태</span>
@@ -178,31 +46,27 @@
         </div>
         <h3>고객 정보</h3>
         <div class="detail detail__customer">
-          <div class="detail__reservation">
-            <div class="reservation__wrap">
-              <span class="reservation__title">고객 성명</span>
-              <span class="reservation__value">value</span>
-            </div>
-            <div class="reservation__wrap">
-              <span class="reservation__title">고객 등급</span>
-              <span class="reservation__value">value</span>
-            </div>
-            <div class="reservation__wrap">
-              <span class="reservation__title">고객 메모</span>
-              <span class="reservation__value">value</span>
-            </div>
+          <div class="reservation__wrap">
+            <span class="reservation__title">고객 성명</span>
+            <span class="reservation__value">value</span>
+          </div>
+          <div class="reservation__wrap">
+            <span class="reservation__title">고객 등급</span>
+            <span class="reservation__value">value</span>
+          </div>
+          <div class="reservation__wrap">
+            <span class="reservation__title">고객 메모</span>
+            <span class="reservation__value">value</span>
           </div>
         </div>
         <div class="detail detail__request">
-          <div class="detail__reservation">
-            <div class="reservation__wrap">
-              <span class="reservation__title">요청 사항</span>
-              <span class="reservation__value">value</span>
-            </div>
+          <div class="reservation__wrap">
+            <span class="reservation__title">요청 사항</span>
+            <span class="reservation__value">value</span>
           </div>
-        </div>
+        </div> -->
       </div>
-      <div class="dimmed show"></div>
+      <div class="dimmed hide"></div>
     </div>
   </body>
 </html>
